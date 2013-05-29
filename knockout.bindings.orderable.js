@@ -109,6 +109,13 @@
         var field = valueAccessor().field;
     	var item = ko.bindingHandlers.orderable.getCollection(viewModel, collection);
 		
+	if (item.orderField == undefined) {
+            item.orderField = ko.observable();
+        }
+        if (item.orderDirection == undefined) {
+            item.orderDirection = ko.observable("asc");
+        }
+        
         var isOrderedByThisField = item.orderField() == field;
             
         //apply css binding programmatically
